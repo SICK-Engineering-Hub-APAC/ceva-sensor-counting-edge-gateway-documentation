@@ -1,0 +1,211 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Quick Reference · Sensor Counting Edge Gateway</title>
+    <link href="../assets/css/manual.css" rel="stylesheet" />
+  </head>
+  <body data-page="reference.html">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <img alt="SICK" src="../assets/images/brand/sick-logo.svg" />
+          <h1>Sensor Counting Edge Gateway</h1>
+          <p>
+            End-User Manual · v1.0.0<br />Supported system · v1.0.0<br />SICK
+          </p>
+        </div>
+        <nav class="nav">
+          <div class="nav-group">Start here</div>
+          <a data-current="index.html" href="../index.html"
+            >Overview &amp; Quick Start</a
+          >
+          <a data-current="how-it-works.html" href="how-it-works.html"
+            >How the System Works</a
+          >
+          <div class="nav-group">Operate the system</div>
+          <a data-current="operations.html" href="operations.html"
+            >Operations Page</a
+          >
+          <a data-current="history-log.html" href="history-log.html"
+            >Update History &amp; System Log</a
+          >
+          <div class="nav-group">Reference</div>
+          <a data-current="system.html" href="system.html"
+            >System &amp; Devices</a
+          >
+          <a class="active" data-current="reference.html" href="reference.html"
+            >Quick Reference</a
+          >
+          <div class="nav-group">Support</div>
+          <a data-current="troubleshooting.html" href="troubleshooting.html"
+            >Troubleshooting</a
+          >
+        </nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu">☰ Menu</button>
+          <div class="title">Quick Reference</div>
+          <div class="meta">System v1.0.0 · Documentation v1.0.0</div>
+        </header>
+        <article class="content">
+          <section class="hero">
+            <div class="eyebrow">SICK · Operator Manual</div>
+            <h1>Quick reference for daily operation</h1>
+            <p>
+              Use this page for fast lookups of statuses, common field meanings
+              and default timing behavior.
+            </p>
+            <div class="badges">
+              <span class="badge">TDC-X</span
+              ><span class="badge">Photoelectric sensor</span>
+            </div>
+          </section>
+          <h2>Quick reference</h2>
+          <div class="grid2">
+            <div class="card">
+              <h3>Default timing behavior</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>Typical default</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Check latest pending record</td>
+                    <td>Every 5 seconds</td>
+                  </tr>
+                  <tr>
+                    <td>Send periodic update record</td>
+                    <td>Every 5 minutes</td>
+                  </tr>
+                  <tr>
+                    <td>Retry queued updates</td>
+                    <td>Automatic, periodic retry</td>
+                  </tr>
+                  <tr>
+                    <td>Dashboard refresh</td>
+                    <td>Automatic live refresh</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card">
+              <h3>Status meanings</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ONLINE</td>
+                    <td>The gateway can communicate with the WISE device.</td>
+                  </tr>
+                  <tr>
+                    <td>OFFLINE</td>
+                    <td>The WISE device is unreachable or not responding.</td>
+                  </tr>
+                  <tr>
+                    <td>ACTIVE</td>
+                    <td>
+                      The line is working with an active session and record.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>IDLE</td>
+                    <td>No active session is currently bound.</td>
+                  </tr>
+                  <tr>
+                    <td>Transitioning / Resetting</td>
+                    <td>
+                      The line is moving from one session to another and
+                      resetting its counter.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <h2>Typical field meanings</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Session</td>
+                <td>Current session ID used by the line.</td>
+              </tr>
+              <tr>
+                <td>Record</td>
+                <td>Current server record ID that receives updates.</td>
+              </tr>
+              <tr>
+                <td>Balance</td>
+                <td>Target quantity for the current record.</td>
+              </tr>
+              <tr>
+                <td>Left</td>
+                <td>Remaining quantity to be completed.</td>
+              </tr>
+              <tr>
+                <td>Current hardware count</td>
+                <td>Latest WISE counter reading.</td>
+              </tr>
+              <tr>
+                <td>Queue</td>
+                <td>Number of queued updates for the line.</td>
+              </tr>
+              <tr>
+                <td>Snapshots</td>
+                <td>Local count snapshots waiting to be bound or processed.</td>
+              </tr>
+            </tbody>
+          </table>
+          <h2>Exported CSV files</h2>
+          <ul class="icon-list">
+            <li>
+              <b>Recent update history CSV</b> helps confirm what the gateway
+              attempted to send.
+            </li>
+            <li>
+              <b>System log CSV</b> helps investigate warnings, errors and
+              important events.
+            </li>
+          </ul>
+          <h2>WISE device note</h2>
+          <div class="grid2">
+            <div class="card">
+              <h3>Counter mode</h3>
+              <p>
+                Each installed WISE-4060/WISE-4051 device is commissioned so the
+                selected line channel works as a counter input. Operators
+                normally do not need to open the WISE device web page.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Operator responsibility</h3>
+              <p>
+                During normal operation, do not change WISE network or counter
+                settings. If a line does not count correctly, use the dashboard
+                and exported logs for troubleshooting, then contact support.
+              </p>
+            </div>
+          </div>
+        </article>
+      </main>
+    </div>
+    <script src="../assets/js/manual.js"></script>
+  </body>
+</html>

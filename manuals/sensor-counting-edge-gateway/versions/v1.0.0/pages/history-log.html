@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>
+      Update History &amp; System Log · Sensor Counting Edge Gateway
+    </title>
+    <link href="../assets/css/manual.css" rel="stylesheet" />
+  </head>
+  <body data-page="history-log.html">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <img alt="SICK" src="../assets/images/brand/sick-logo.svg" />
+          <h1>Sensor Counting Edge Gateway</h1>
+          <p>
+            End-User Manual · v1.0.0<br />Supported system · v1.0.0<br />SICK
+          </p>
+        </div>
+        <nav class="nav">
+          <div class="nav-group">Start here</div>
+          <a data-current="index.html" href="../index.html"
+            >Overview & Quick Start</a
+          >
+          <a data-current="how-it-works.html" href="how-it-works.html"
+            >How the System Works</a
+          >
+          <div class="nav-group">Operate the system</div>
+          <a data-current="operations.html" href="operations.html"
+            >Operations Page</a
+          >
+          <a
+            class="active"
+            data-current="history-log.html"
+            href="history-log.html"
+            >Update History & System Log</a
+          >
+          <div class="nav-group">Reference</div>
+          <a data-current="system.html" href="system.html">System & Devices</a>
+          <a data-current="reference.html" href="reference.html"
+            >Quick Reference</a
+          >
+          <div class="nav-group">Support</div>
+          <a data-current="troubleshooting.html" href="troubleshooting.html"
+            >Troubleshooting</a
+          >
+        </nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu">☰ Menu</button>
+          <div class="title">Update History &amp; System Log</div>
+          <div class="meta">System v1.0.0 · Documentation v1.0.0</div>
+        </header>
+        <article class="content">
+          <section class="hero">
+            <div class="eyebrow">SICK · Operator Manual</div>
+            <h1>Using the history and log pages</h1>
+            <p>
+              These pages help operators review what the system has done,
+              confirm update results and export CSV files when needed.
+            </p>
+            <div class="badges">
+              <span class="badge">TDC-X</span
+              ><span class="badge">Photoelectric sensor</span>
+            </div>
+          </section>
+
+          <p class="lead">
+            These two pages are read-only detail pages for audit and support
+            use. Operators can review the latest retained data and export it as
+            CSV.
+          </p>
+          <h2>Recent update history page</h2>
+          <figure class="figure">
+            <img
+              alt="Recent update history page"
+              loading="lazy"
+              src="../assets/images/ui/update-history-page.png"
+            />
+            <figcaption>Recent update history page.</figcaption>
+          </figure>
+          <div class="card">
+            <h3>What this page shows</h3>
+            <p>
+              Each row represents one update attempt retained in runtime memory.
+            </p>
+            <ul class="icon-list">
+              <li><b>Time</b> — when the update attempt happened.</li>
+              <li>
+                <b>Line / Sensor / Session / Record</b> — which production line
+                and server record were involved.
+              </li>
+              <li>
+                <b>Kind</b> — for example a periodic update or a final session
+                update.
+              </li>
+              <li><b>Result</b> — success or failure.</li>
+              <li><b>Attempt</b> — retry count for that row.</li>
+              <li><b>HTTP</b> — returned HTTP status code when available.</li>
+              <li>
+                <b>Count / Quantity left / Current speed</b> — business values
+                sent by the gateway.
+              </li>
+              <li><b>Error</b> — short failure description when applicable.</li>
+            </ul>
+            <p>Use the <b>Download CSV</b> button to export the table.</p>
+          </div>
+          <h2>System log page</h2>
+          <figure class="figure">
+            <img
+              alt="System log page"
+              loading="lazy"
+              src="../assets/images/ui/system-log-page.png"
+            />
+            <figcaption>System log page.</figcaption>
+          </figure>
+          <div class="card">
+            <h3>What this page shows</h3>
+            <ul class="icon-list">
+              <li>
+                <b>Level</b> — <code>INFO</code>, <code>WARN</code> or
+                <code>ERROR</code>.
+              </li>
+              <li>
+                <b>Event</b> — short event code such as a read failure, session
+                adoption or update success.
+              </li>
+              <li>
+                <b>Line / Sensor / Session / Record</b> — useful context when
+                the event is related to a specific line.
+              </li>
+              <li>
+                <b>Details</b> — additional technical detail for support
+                analysis.
+              </li>
+            </ul>
+            <p>
+              Use the <b>Download CSV</b> button to export the log list before
+              sharing it with SICK support.
+            </p>
+          </div>
+          <h2>When these pages are helpful</h2>
+          <ul class="icon-list">
+            <li>To confirm that periodic updates are being sent.</li>
+            <li>To verify whether an update failed and later succeeded.</li>
+            <li>To capture evidence for troubleshooting or support.</li>
+            <li>
+              To review repeated warnings that may explain an offline line or
+              delayed updates.
+            </li>
+          </ul>
+        </article>
+      </main>
+    </div>
+    <script src="../assets/js/manual.js"></script>
+  </body>
+</html>

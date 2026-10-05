@@ -1,0 +1,20 @@
+{
+  "slug": "sensor-counting-edge-gateway",
+  "title": "Sensor Counting Edge Gateway End-User Manual",
+  "description": "Operator guide for monitoring counts, reviewing update delivery, and understanding the Sensor Counting Edge Gateway web UI.",
+  "publicPath": "usage-manual",
+  "manualType": "end-user",
+  "latest": "v1.0.0",
+  "versions": [
+    {
+      "version": "v1.0.0",
+      "status": "current",
+      "date": "2026-10-05",
+      "summary": "Initial public operator manual.",
+      "compatibleAppVersions": [
+        "Sensor Counting Edge Gateway v1.0.0"
+      ],
+      "compatibleFirmwareVersions": []
+    }
+  ]
+}

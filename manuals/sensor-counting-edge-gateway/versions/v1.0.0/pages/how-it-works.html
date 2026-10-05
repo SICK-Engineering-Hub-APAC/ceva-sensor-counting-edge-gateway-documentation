@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>How the System Works · Sensor Counting Edge Gateway</title>
+    <link href="../assets/css/manual.css" rel="stylesheet" />
+  </head>
+  <body data-page="how-it-works.html">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <img alt="SICK" src="../assets/images/brand/sick-logo.svg" />
+          <h1>Sensor Counting Edge Gateway</h1>
+          <p>
+            End-User Manual · v1.0.0<br />Supported system · v1.0.0<br />SICK
+          </p>
+        </div>
+        <nav class="nav">
+          <div class="nav-group">Start here</div>
+          <a data-current="index.html" href="../index.html"
+            >Overview & Quick Start</a
+          >
+          <a
+            class="active"
+            data-current="how-it-works.html"
+            href="how-it-works.html"
+            >How the System Works</a
+          >
+          <div class="nav-group">Operate the system</div>
+          <a data-current="operations.html" href="operations.html"
+            >Operations Page</a
+          >
+          <a data-current="history-log.html" href="history-log.html"
+            >Update History & System Log</a
+          >
+          <div class="nav-group">Reference</div>
+          <a data-current="system.html" href="system.html">System & Devices</a>
+          <a data-current="reference.html" href="reference.html"
+            >Quick Reference</a
+          >
+          <div class="nav-group">Support</div>
+          <a data-current="troubleshooting.html" href="troubleshooting.html"
+            >Troubleshooting</a
+          >
+        </nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu">☰ Menu</button>
+          <div class="title">How the System Works</div>
+          <div class="meta">System v1.0.0 · Documentation v1.0.0</div>
+        </header>
+        <article class="content">
+          <section class="hero">
+            <div class="eyebrow">SICK · Operator Manual</div>
+            <h1>How the system operates</h1>
+            <p>
+              This page explains the core logic in a simple operator-friendly
+              way: counting, checking pending records, periodic updates and
+              automatic session handling.
+            </p>
+            <div class="badges">
+              <span class="badge">TDC-X</span
+              ><span class="badge">Photoelectric sensor</span>
+            </div>
+          </section>
+
+          <h2>End-to-end operating logic</h2>
+          <div class="flow">
+            <span>WISE counts sensor pulses</span><i>→</i
+            ><span>Gateway reads counter</span><i>→</i
+            ><span>Gateway checks latest pending record</span><i>→</i
+            ><span>Gateway sends periodic update</span><i>→</i
+            ><span>History and logs are shown on the UI</span>
+          </div>
+          <h3>1. Counting at the field layer</h3>
+          <p>
+            Each production line uses one SICK photoelectric sensor connected to
+            one WISE-4060/WISE-4051 module. The WISE module performs the pulse
+            counting locally. This means the gateway does not have to process
+            every pulse directly, which improves reliability and reduces load on
+            the TDC-X.
+          </p>
+          <h3>2. Reading the line counter</h3>
+          <p>
+            The gateway reads the WISE counter at a configured cycle. The read
+            value becomes the current hardware count shown on the Operations
+            page.
+          </p>
+          <h3>3. Checking the latest pending record</h3>
+          <p>
+            The gateway regularly asks the server for the latest pending record
+            for each sensor. A record is accepted only when its status is
+            completed, sensor count and record time are empty. If no valid
+            record is available yet, the line keeps its current local state and
+            waits for the next fetch cycle.
+          </p>
+          <h3>4. Sending periodic updates</h3>
+          <p>
+            For an active session, the gateway calculates the current result and
+            sends an update at the configured interval. The default update
+            interval is <b>5 minutes</b>.
+          </p>
+          <ul class="icon-list">
+            <li>
+              <b>Sensor count</b> = the latest hardware counter read from the
+              WISE device.
+            </li>
+            <li><b>Quantity left</b> = balance − sensor count.</li>
+            <li>
+              <b>Current speed</b> = current sensor count − last submitted
+              sensor count.
+            </li>
+          </ul>
+          <h3>5. Handling temporary communication failure</h3>
+          <p>
+            If a PATCH update cannot be sent successfully from the gateway side,
+            the request is added to the durable update queue. The line still
+            continues working. The queue retries failed updates automatically
+            until they are sent successfully.
+          </p>
+          <h3>6. Handling a session change</h3>
+          <p>
+            When the server presents a new session ID, the gateway completes the
+            previous session immediately, resets the line counter, and then
+            starts using the new session.
+          </p>
+          <ol class="steps">
+            <li>
+              Finish the old session by creating a final update using the latest
+              current count.
+            </li>
+            <li>If that send fails locally, keep it in the retry queue.</li>
+            <li>Reset the WISE counter for the line.</li>
+            <li>
+              Adopt the new session and continue normal counting with the new
+              record.
+            </li>
+          </ol>
+          <figure class="figure">
+            <img
+              alt="Software processing flow diagram"
+              loading="lazy"
+              src="../assets/images/architecture/software-processing-flow.png"
+            />
+            <figcaption>
+              Software processing flow — high-level application logic used by
+              the gateway.
+            </figcaption>
+          </figure>
+          <h2>Important operating terms</h2>
+          <div class="grid2">
+            <div class="card">
+              <h3>Session</h3>
+              <p>
+                A production session identified by a session ID. A line normally
+                continues counting within the same session until the server
+                changes it.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Record</h3>
+              <p>
+                A pending server record linked to the current session. The
+                gateway updates this record with the latest counting result.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Durable update queue</h3>
+              <p>
+                A local retry list that stores updates that could not be sent
+                immediately. This protects data during network or server
+                interruptions.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Local snapshots</h3>
+              <p>
+                Temporary locally stored count snapshots. These help the gateway
+                preserve information while server communication is unavailable.
+              </p>
+            </div>
+          </div>
+        </article>
+      </main>
+    </div>
+    <script src="../assets/js/manual.js"></script>
+  </body>
+</html>

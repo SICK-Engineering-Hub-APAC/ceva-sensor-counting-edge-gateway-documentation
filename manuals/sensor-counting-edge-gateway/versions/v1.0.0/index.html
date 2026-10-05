@@ -1,0 +1,180 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Overview &amp; Quick Start · Sensor Counting Edge Gateway</title>
+    <link href="assets/css/manual.css" rel="stylesheet" />
+  </head>
+  <body data-page="index.html">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <img alt="SICK" src="assets/images/brand/sick-logo.svg" />
+          <h1>Sensor Counting Edge Gateway</h1>
+          <p>
+            End-User Manual · v1.0.0<br />Supported system · v1.0.0<br />SICK
+          </p>
+        </div>
+        <nav class="nav">
+          <div class="nav-group">Start here</div>
+          <a class="active" data-current="index.html" href="index.html"
+            >Overview &amp; Quick Start</a
+          >
+          <a data-current="how-it-works.html" href="pages/how-it-works.html"
+            >How the System Works</a
+          >
+          <div class="nav-group">Operate the system</div>
+          <a data-current="operations.html" href="pages/operations.html"
+            >Operations Page</a
+          >
+          <a data-current="history-log.html" href="pages/history-log.html"
+            >Update History &amp; System Log</a
+          >
+          <div class="nav-group">Reference</div>
+          <a data-current="system.html" href="pages/system.html"
+            >System &amp; Devices</a
+          >
+          <a data-current="reference.html" href="pages/reference.html"
+            >Quick Reference</a
+          >
+          <div class="nav-group">Support</div>
+          <a
+            data-current="troubleshooting.html"
+            href="pages/troubleshooting.html"
+            >Troubleshooting</a
+          >
+        </nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu">☰ Menu</button>
+          <div class="title">Overview &amp; Quick Start</div>
+          <div class="meta">System v1.0.0 · Documentation v1.0.0</div>
+        </header>
+        <article class="content">
+          <section class="hero">
+            <div class="eyebrow">SICK · Operator Manual</div>
+            <h1>Sensor Counting Edge Gateway</h1>
+            <p>
+              Operator guide for monitoring counts, checking update delivery and
+              understanding the web UI. Use this manual when working with the
+              system in daily operation.
+            </p>
+            <div class="badges">
+              <span class="badge">TDC-X</span
+              ><span class="badge">Photoelectric sensor</span>
+            </div>
+          </section>
+          <h2>Purpose of the system</h2>
+          <p class="lead">
+            The Sensor Counting Edge Gateway reads counting values from field
+            sensors, links them to the current active production session, and
+            sends regular updates to the business server. It also provides a
+            simple local dashboard for operators.
+          </p>
+          <div class="grid">
+            <div class="card third">
+              <h3>Open the UI</h3>
+              <p>Use a supported web browser and open the dashboard URLs.</p>
+              <div class="credential">
+                <strong>Main pages</strong><br /><code
+                  >/dashboard/operations</code
+                ><br /><code>/dashboard/update-history</code><br /><code
+                  >/dashboard/system-log</code
+                >
+              </div>
+            </div>
+            <div class="card third">
+              <h3>Normal operator scope</h3>
+              <p>
+                Operators monitor counts, review update results, export CSV
+                files and check system health. Daily operation does
+                <b>not</b> require editing sensor or line settings.
+              </p>
+            </div>
+            <div class="card third">
+              <h3>Important note</h3>
+              <p>
+                Line sensor configuration is prepared once in the beginning. If
+                a line is not counting correctly, use the troubleshooting page
+                and contact support instead of changing settings.
+              </p>
+            </div>
+          </div>
+          <div class="callout">
+            <b>In short:</b> sensor pulses are counted in the WISE device, the
+            edge gateway checks the latest pending record from the server, sends
+            update records every configured interval (default <b>5 minutes</b>),
+            and automatically handles session changes.
+          </div>
+          <h2>What operators usually do</h2>
+          <ol class="steps">
+            <li>
+              Open the <b>Operations</b> page and confirm the server connection
+              and line status.
+            </li>
+            <li>
+              Watch the current count, active session and queue status for each
+              line.
+            </li>
+            <li>
+              Review the <b>Recent update history</b> page when you want to
+              confirm submitted updates.
+            </li>
+            <li>
+              Review the <b>System log</b> page when a warning or error needs
+              attention.
+            </li>
+            <li>
+              Download CSV files from the history or log pages when you need to
+              share records with support.
+            </li>
+          </ol>
+          <figure class="figure">
+            <img
+              alt="Operations page overview"
+              loading="lazy"
+              src="assets/images/ui/operations-overview.png"
+            />
+            <figcaption>
+              Operations page — the main page used in daily operation.
+            </figcaption>
+          </figure>
+          <div class="grid2">
+            <div class="card">
+              <h3>Expected operator result</h3>
+              <ul class="icon-list">
+                <li>Line is <b>ONLINE</b>.</li>
+                <li>
+                  Current hardware count increases when products pass the
+                  sensor.
+                </li>
+                <li>Update queue normally stays low or empty.</li>
+                <li>Recent update history shows successful updates.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>When to ask for support</h3>
+              <ul class="icon-list">
+                <li>WISE stays offline.</li>
+                <li>Update queue keeps growing.</li>
+                <li>System log shows repeated errors.</li>
+                <li>
+                  Count does not increase although the sensor is triggered.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p class="small muted">
+            Note: some screenshots may show an internal build number from the
+            running application. This manual documents the approved operator
+            workflow for documentation version 1.0.0.
+          </p>
+        </article>
+      </main>
+    </div>
+    <script src="assets/js/manual.js"></script>
+  </body>
+</html>

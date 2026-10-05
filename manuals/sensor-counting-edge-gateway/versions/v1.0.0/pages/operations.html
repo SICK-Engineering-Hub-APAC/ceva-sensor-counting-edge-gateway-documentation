@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Operations Page · Sensor Counting Edge Gateway</title>
+    <link href="../assets/css/manual.css" rel="stylesheet" />
+  </head>
+  <body data-page="operations.html">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <img alt="SICK" src="../assets/images/brand/sick-logo.svg" />
+          <h1>Sensor Counting Edge Gateway</h1>
+          <p>
+            End-User Manual · v1.0.0<br />Supported system · v1.0.0<br />SICK
+          </p>
+        </div>
+        <nav class="nav">
+          <div class="nav-group">Start here</div>
+          <a data-current="index.html" href="../index.html"
+            >Overview & Quick Start</a
+          >
+          <a data-current="how-it-works.html" href="how-it-works.html"
+            >How the System Works</a
+          >
+          <div class="nav-group">Operate the system</div>
+          <a
+            class="active"
+            data-current="operations.html"
+            href="operations.html"
+            >Operations Page</a
+          >
+          <a data-current="history-log.html" href="history-log.html"
+            >Update History & System Log</a
+          >
+          <div class="nav-group">Reference</div>
+          <a data-current="system.html" href="system.html">System & Devices</a>
+          <a data-current="reference.html" href="reference.html"
+            >Quick Reference</a
+          >
+          <div class="nav-group">Support</div>
+          <a data-current="troubleshooting.html" href="troubleshooting.html"
+            >Troubleshooting</a
+          >
+        </nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu">☰ Menu</button>
+          <div class="title">Operations Page</div>
+          <div class="meta">System v1.0.0 · Documentation v1.0.0</div>
+        </header>
+        <article class="content">
+          <section class="hero">
+            <div class="eyebrow">SICK · Operator Manual</div>
+            <h1>Using the Operations page</h1>
+            <p>
+              Learn how to read the main dashboard, understand the summary cards
+              and interpret line information correctly.
+            </p>
+            <div class="badges">
+              <span class="badge">TDC-X</span
+              ><span class="badge">Photoelectric sensor</span>
+            </div>
+          </section>
+
+          <p class="lead">
+            The Operations page is the main dashboard for daily monitoring. It
+            gives one-screen visibility of line status, queue health, current
+            count and recent activity.
+          </p>
+          <figure class="figure">
+            <img
+              alt="Operations page example"
+              loading="lazy"
+              src="../assets/images/ui/operations-overview.png"
+            />
+            <figcaption>Operations page overview.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img
+              alt="Operations page with update history"
+              loading="lazy"
+              src="../assets/images/ui/operations-with-history.png"
+            />
+            <figcaption>
+              Operations page after at least one successful update.
+            </figcaption>
+          </figure>
+          <h2>Main areas on the page</h2>
+          <div class="grid2">
+            <div class="card">
+              <h3>Header summary cards</h3>
+              <ul class="icon-list">
+                <li>
+                  <b>Customer/Server connected</b> — overall server
+                  communication status.
+                </li>
+                <li><b>WISE online</b> — number of connected line devices.</li>
+                <li>
+                  <b>Update queue</b> — number of updates waiting for retry.
+                </li>
+                <li>
+                  <b>Local snapshots</b> — locally retained count snapshots.
+                </li>
+                <li>
+                  <b>Transitioning</b> — number of lines currently switching
+                  session or resetting.
+                </li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Runtime metrics</h3>
+              <p>
+                This panel helps check overall health. It shows read counts, API
+                counts, reset results and Node-RED resource usage such as CPU,
+                memory and uptime.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Durable update queue</h3>
+            <p>
+              This table shows updates that still need retry. A normal healthy
+              state is usually an empty queue or a queue that quickly returns to
+              empty after a temporary communication issue.
+            </p>
+          </div>
+          <h2>Understanding each line card</h2>
+          <div class="grid2">
+            <div class="card">
+              <ul class="icon-list">
+                <li><b>Line name</b> — the production line identifier.</li>
+                <li>
+                  <b>[Sensor Name] / [IP Address] / [DI Channel]</b> — installed
+                  field device details for reference.
+                </li>
+                <li>
+                  <b>Current hardware count</b> — latest count value read from
+                  the WISE counter.
+                </li>
+                <li>
+                  <b>ONLINE / OFFLINE</b> — communication status of the WISE
+                  device.
+                </li>
+                <li>
+                  <b>State</b> — line runtime state, for example
+                  <code>IDLE</code>, <code>ACTIVE</code> or a transition/reset
+                  state.
+                </li>
+              </ul>
+            </div>
+            <div class="card">
+              <ul class="icon-list">
+                <li><b>Session</b> — current session ID used for that line.</li>
+                <li>
+                  <b>Record</b> — current server record ID used for updates.
+                </li>
+                <li>
+                  <b>Left</b> — remaining quantity still to be
+                  produced/processed.
+                </li>
+                <li><b>Balance</b> — target quantity for the active record.</li>
+                <li>
+                  <b>Queue</b> and <b>Snapshots</b> — local backlog indicators
+                  for that line.
+                </li>
+                <li><b>Read time</b> — latest counter read timestamp.</li>
+              </ul>
+            </div>
+          </div>
+          <h2>Expected page behavior</h2>
+          <ul class="icon-list">
+            <li>The page refreshes automatically.</li>
+            <li>Counts should increase when material passes the sensor.</li>
+            <li>
+              The queue may temporarily increase during a communication problem,
+              then reduce again automatically.
+            </li>
+            <li>
+              Recent update history and system log widgets at the bottom provide
+              a quick local summary without leaving the Operations page.
+            </li>
+          </ul>
+        </article>
+      </main>
+    </div>
+    <script src="../assets/js/manual.js"></script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Troubleshooting · Sensor Counting Edge Gateway</title>
+    <link href="../assets/css/manual.css" rel="stylesheet" />
+  </head>
+  <body data-page="troubleshooting.html">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <img alt="SICK" src="../assets/images/brand/sick-logo.svg" />
+          <h1>Sensor Counting Edge Gateway</h1>
+          <p>
+            End-User Manual · v1.0.0<br />Supported system · v1.0.0<br />SICK
+          </p>
+        </div>
+        <nav class="nav">
+          <div class="nav-group">Start here</div>
+          <a data-current="index.html" href="../index.html"
+            >Overview & Quick Start</a
+          >
+          <a data-current="how-it-works.html" href="how-it-works.html"
+            >How the System Works</a
+          >
+          <div class="nav-group">Operate the system</div>
+          <a data-current="operations.html" href="operations.html"
+            >Operations Page</a
+          >
+          <a data-current="history-log.html" href="history-log.html"
+            >Update History & System Log</a
+          >
+          <div class="nav-group">Reference</div>
+          <a data-current="system.html" href="system.html">System & Devices</a>
+          <a data-current="reference.html" href="reference.html"
+            >Quick Reference</a
+          >
+          <div class="nav-group">Support</div>
+          <a
+            class="active"
+            data-current="troubleshooting.html"
+            href="troubleshooting.html"
+            >Troubleshooting</a
+          >
+        </nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu">☰ Menu</button>
+          <div class="title">Troubleshooting</div>
+          <div class="meta">System v1.0.0 · Documentation v1.0.0</div>
+        </header>
+        <article class="content">
+          <section class="hero">
+            <div class="eyebrow">SICK · Operator Manual</div>
+            <h1>Simple troubleshooting</h1>
+            <p>
+              Use this compact guide when something does not look right on the
+              dashboard or when support evidence is needed.
+            </p>
+            <div class="badges">
+              <span class="badge">TDC-X</span
+              ><span class="badge">Photoelectric sensor</span>
+            </div>
+          </section>
+
+          <h2>Simple troubleshooting guide</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Symptom</th>
+                <th>What it usually means</th>
+                <th>Recommended action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Operations page does not open</td>
+                <td>
+                  The Node-RED service or network path may be unavailable.
+                </td>
+                <td>
+                  Check the TDC-X IP address, browser URL and network
+                  connection. If other pages also fail, contact support.
+                </td>
+              </tr>
+              <tr>
+                <td>Line shows OFFLINE</td>
+                <td>The gateway cannot read the WISE device.</td>
+                <td>
+                  Check power, network/Wi-Fi, device IP reachability and field
+                  wiring. If the problem continues, export logs and contact
+                  support.
+                </td>
+              </tr>
+              <tr>
+                <td>Count does not increase</td>
+                <td>
+                  The sensor is not detecting items or the WISE counter is not
+                  receiving pulses.
+                </td>
+                <td>
+                  Check object path, sensor indication, WISE device status and
+                  confirm the correct line is being observed.
+                </td>
+              </tr>
+              <tr>
+                <td>Update queue keeps increasing</td>
+                <td>
+                  The gateway cannot send updates to the server right now.
+                </td>
+                <td>
+                  Check server connectivity. The system continues storing
+                  retries automatically. If the queue does not reduce after
+                  connectivity is restored, contact support.
+                </td>
+              </tr>
+              <tr>
+                <td>Local snapshots keep increasing</td>
+                <td>
+                  Pending records may not be available or the server may be
+                  temporarily unavailable.
+                </td>
+                <td>
+                  Check server status and review the system log for related
+                  warnings.
+                </td>
+              </tr>
+              <tr>
+                <td>Transitioning remains active for a long time</td>
+                <td>
+                  The system is waiting to complete a session change or counter
+                  reset.
+                </td>
+                <td>
+                  Wait briefly, then review the system log. If the state does
+                  not clear, capture screenshots and export the CSV files for
+                  support.
+                </td>
+              </tr>
+              <tr>
+                <td>Many repeated WARN or ERROR logs</td>
+                <td>There is a repeated communication or process issue.</td>
+                <td>
+                  Open the System log page, download the CSV and share it with
+                  SICK support.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h2>Good operator practice</h2>
+          <ul class="icon-list">
+            <li>Check the Operations page first, then the System log page.</li>
+            <li>
+              Export CSV files before rebooting or making changes when support
+              evidence is needed.
+            </li>
+            <li>
+              Avoid changing field hardware settings during normal operation.
+            </li>
+            <li>
+              If a line is actively switching session, avoid interrupting the
+              system unless instructed by support.
+            </li>
+          </ul>
+          <div class="callout">
+            <b>Reminder:</b> temporary network or server interruptions do not
+            immediately mean lost data. The system uses a durable retry queue to
+            resend failed updates automatically.
+          </div>
+        </article>
+      </main>
+    </div>
+    <script src="../assets/js/manual.js"></script>
+  </body>
+</html>

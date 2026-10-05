@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>System &amp; Devices · Sensor Counting Edge Gateway</title>
+    <link href="../assets/css/manual.css" rel="stylesheet" />
+  </head>
+  <body data-page="system.html">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <img alt="SICK" src="../assets/images/brand/sick-logo.svg" />
+          <h1>Sensor Counting Edge Gateway</h1>
+          <p>
+            End-User Manual · v1.0.0<br />Supported system · v1.0.0<br />SICK
+          </p>
+        </div>
+        <nav class="nav">
+          <div class="nav-group">Start here</div>
+          <a data-current="index.html" href="../index.html"
+            >Overview & Quick Start</a
+          >
+          <a data-current="how-it-works.html" href="how-it-works.html"
+            >How the System Works</a
+          >
+          <div class="nav-group">Operate the system</div>
+          <a data-current="operations.html" href="operations.html"
+            >Operations Page</a
+          >
+          <a data-current="history-log.html" href="history-log.html"
+            >Update History & System Log</a
+          >
+          <div class="nav-group">Reference</div>
+          <a class="active" data-current="system.html" href="system.html"
+            >System & Devices</a
+          >
+          <a data-current="reference.html" href="reference.html"
+            >Quick Reference</a
+          >
+          <div class="nav-group">Support</div>
+          <a data-current="troubleshooting.html" href="troubleshooting.html"
+            >Troubleshooting</a
+          >
+        </nav>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu">☰ Menu</button>
+          <div class="title">System &amp; Devices</div>
+          <div class="meta">System v1.0.0 · Documentation v1.0.0</div>
+        </header>
+        <article class="content">
+          <section class="hero">
+            <div class="eyebrow">SICK · Operator Manual</div>
+            <h1>System architecture and integrated devices</h1>
+            <p>
+              Understand the overall system architecture, the role of each
+              integrated device and the purpose of each web page.
+            </p>
+            <div class="badges">
+              <span class="badge">TDC-X</span
+              ><span class="badge">Photoelectric sensor</span>
+            </div>
+          </section>
+
+          <h2>System architecture</h2>
+          <p class="lead">
+            The Sensor Counting Edge Gateway runs on a SICK TDC-X and acts as
+            the bridge between field devices and the business server.
+          </p>
+          <figure class="figure">
+            <img
+              alt="Device architecture diagram"
+              loading="lazy"
+              src="../assets/images/architecture/device-architecture.png"
+            />
+            <figcaption>Overall device architecture of the system.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img
+              alt="Software processing flow diagram"
+              loading="lazy"
+              src="../assets/images/architecture/software-processing-flow.png"
+            />
+            <figcaption>
+              High-level software flow for counting, session handling and update
+              submission.
+            </figcaption>
+          </figure>
+          <h2>Integrated devices</h2>
+          <div class="grid2">
+            <div class="card">
+              <h3>SICK TDC-X</h3>
+              <p>
+                The industrial edge gateway that hosts Node-RED, runs the
+                business logic and exposes the web UI used by operators.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Advantech WISE-4060/WISE-4051</h3>
+              <p>
+                Wireless I/O module used as the field counter device. It
+                receives sensor pulses and exposes the count to the gateway over
+                Modbus TCP.
+              </p>
+            </div>
+            <div class="card">
+              <h3>SICK GTE6-P4231 sensor</h3>
+              <p>
+                Photoelectric sensor that detects passing items and generates
+                pulses for the WISE counter.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Wi-Fi access point / Ethernet network</h3>
+              <p>
+                Provides communication between the WISE devices, TDC-X and the
+                server network.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Business server</h3>
+              <p>
+                Provides pending records and receives periodic update records
+                from the gateway.
+              </p>
+            </div>
+          </div>
+          <h2>Web UI pages</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Page</th>
+                <th>Typical path</th>
+                <th>Main purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Operations</td>
+                <td><code>/dashboard/operations</code></td>
+                <td>Main operational dashboard.</td>
+              </tr>
+              <tr>
+                <td>Recent update history</td>
+                <td><code>/dashboard/update-history</code></td>
+                <td>Shows retained update attempts and supports CSV export.</td>
+              </tr>
+              <tr>
+                <td>System log</td>
+                <td><code>/dashboard/system-log</code></td>
+                <td>
+                  Shows retained application logs and supports CSV export.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </main>
+    </div>
+    <script src="../assets/js/manual.js"></script>
+  </body>
+</html>
