@@ -27,6 +27,9 @@ Set-Content -LiteralPath (Join-Path $outputRoot ".nojekyll") -Value "" -Encoding
 $siteAssetsOutput = Join-Path $outputRoot "assets/site"
 New-Item -ItemType Directory -Path $siteAssetsOutput -Force | Out-Null
 Copy-Item -Path (Join-Path $repoRoot "assets/site/*") -Destination $siteAssetsOutput -Recurse -Force
+$siteImagesOutput = Join-Path $outputRoot "assets/images"
+New-Item -ItemType Directory -Path $siteImagesOutput -Force | Out-Null
+Copy-Item -Path (Join-Path $repoRoot "assets/images/*") -Destination $siteImagesOutput -Recurse -Force
 
 $slug = [string]$manifest.slug
 $title = ConvertTo-HtmlText $manifest.title
@@ -125,7 +128,7 @@ $landingPage = @"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="$description">
-    <title>Sensor Counting Edge Gateway Documentation</title>
+    <title>Sensor Counting Edge Gateway</title>
     <link rel="icon" type="image/webp" href="$publicPath/assets/images/brand/sick-s-logo.webp">
     <link rel="stylesheet" href="assets/site/site.css">
   </head>
@@ -133,7 +136,7 @@ $landingPage = @"
     <header class="site-header">
       <div class="site-header__inner">
         <a class="brand" href="index.html">
-          <img class="brand__logo" src="$publicPath/assets/images/brand/sick-logo.svg" alt="SICK">
+          <img class="brand__logo" src="assets/images/sick-logo-transparent.png" alt="SICK">
           <span>Sensor Counting Edge Gateway</span>
         </a>
         <nav class="nav" aria-label="Primary navigation">
@@ -146,8 +149,8 @@ $landingPage = @"
         <p class="eyebrow">Public documentation</p>
         <h1>Sensor Counting Edge Gateway Documentation</h1>
         <p class="lead">
-          End-user documentation for operating the Sensor Counting Edge Gateway,
-          monitoring counts, reviewing updates, and troubleshooting the system.
+          End-user documentation for operating, monitoring, and troubleshooting
+          the Sensor Counting Edge Gateway system.
         </p>
       </section>
       <section class="manual-grid" aria-label="Documentation list">
@@ -165,7 +168,7 @@ $landingPage = @"
     <footer class="site-footer">
       <span>&copy; <span data-current-year></span> SICK Engineering Hub APAC</span>
     </footer>
-    <script>document.querySelector('[data-current-year]').textContent = new Date().getFullYear();</script>
+    <script src="assets/site/site.js"></script>
   </body>
 </html>
 "@
