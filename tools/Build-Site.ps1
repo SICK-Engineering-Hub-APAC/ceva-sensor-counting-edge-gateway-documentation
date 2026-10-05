@@ -84,7 +84,7 @@ $versionsPage = @"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>$title versions</title>
-    <link rel="icon" type="image/svg+xml" href="../../$publicPath/assets/images/brand/sick-logo.svg">
+    <link rel="icon" type="image/webp" href="../../$publicPath/assets/images/brand/sick-s-logo.webp">
     <link rel="stylesheet" href="../../assets/site/site.css">
   </head>
   <body>
@@ -111,7 +111,7 @@ $latestRedirect = @"
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="refresh" content="0; url=$latest/index.html">
     <title>$title latest</title>
-    <link rel="icon" type="image/svg+xml" href="../../$publicPath/assets/images/brand/sick-logo.svg">
+    <link rel="icon" type="image/webp" href="../../$publicPath/assets/images/brand/sick-s-logo.webp">
   </head>
   <body><p><a href="$latest/index.html">Open the latest manual ($latest)</a></p></body>
 </html>
@@ -126,7 +126,7 @@ $landingPage = @"
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="$description">
     <title>Sensor Counting Edge Gateway Documentation</title>
-    <link rel="icon" type="image/svg+xml" href="$publicPath/assets/images/brand/sick-logo.svg">
+    <link rel="icon" type="image/webp" href="$publicPath/assets/images/brand/sick-s-logo.webp">
     <link rel="stylesheet" href="assets/site/site.css">
   </head>
   <body>
